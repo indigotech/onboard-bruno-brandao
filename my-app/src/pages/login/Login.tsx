@@ -14,13 +14,11 @@ function Login() {
         return alert("O campo de email não pode estar vazio.");
       case password === "":
         return alert("O campo de senha não pode estar vazio.");
-      case password.length < 7:
-        return alert("A senha deve ter no mínimo 7 dígitos.");
       case !validateEmail.test(email):
         return alert("Por favor digite um e-mail válido! ");
       case !validatePassword.test(password):
         return alert(
-          "Por favor digite uma senha que contenha ao menos uma letra e um número",
+          "A senha deve ter no mínimo 7 caracteres sendo ao menos uma letra e um dígito",
         );
       default:
     }
