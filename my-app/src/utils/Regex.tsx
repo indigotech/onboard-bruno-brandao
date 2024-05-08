@@ -3,5 +3,5 @@ export const validateEmail = new RegExp(
 );
 
 export const validatePassword = new RegExp(
-  "^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$",
+  "^(?=.*?[A-Za-z])(?=.*?[0-9]).{7,}$",
 );
