@@ -4,12 +4,14 @@ import { validatePassword, validateEmail } from "../utils/Regex";
 import { useMutation } from "@apollo/client";
 import { LOGIN_MUTATION } from "../mutations/Mutations";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
 function Login() {
   const [login] = useMutation(LOGIN_MUTATION);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSignIn(e: FormEvent) {
     e.preventDefault();
@@ -29,40 +31,48 @@ function Login() {
     }
 
     try {
+      setLoading(true);
       const result = await login({ variables: { input: { email, password } } });
       const token = result.data.login.token;
       localStorage.setItem("token", token);
       navigate("/blank");
     } catch (error) {
+      setLoading(false);
       console.error("Error during login:", error);
     }
   }
   return (
     <div className="Login-container">
-      <h1 className="Login-h1"> Bem-vindo(a) à Taqtile!</h1>
-      <form onSubmit={handleSignIn}>
-        <div className="Login">
-          <label className="Login-label-text">E-mail:</label>
-          <input
-            type="text"
-            className="Login-input-field"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="Login">
-          <label className="Login-label-text">Senha:</label>
-          <input
-            type="password"
-            className="Login-input-field"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button className="Login-button" type="submit">
-          Entrar
-        </button>
-      </form>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <h1 className="Login-h1"> Bem-vindo(a) à Taqtile!</h1>
+          <form onSubmit={handleSignIn}>
+            <div className="Login">
+              <label className="Login-label-text">E-mail:</label>
+              <input
+                type="text"
+                className="Login-input-field"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="Login">
+              <label className="Login-label-text">Senha:</label>
+              <input
+                type="password"
+                className="Login-input-field"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button className="Login-button" type="submit">
+              Entrar
+            </button>
+          </form>
+        </>
+      )}
     </div>
   );
 }
