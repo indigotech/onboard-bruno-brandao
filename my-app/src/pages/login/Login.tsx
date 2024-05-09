@@ -1,12 +1,16 @@
 import "./Login.css";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { validatePassword, validateEmail } from "../../utils/Regex";
+import { useMutation } from "@apollo/client";
+import { LOGIN_MUTATION } from "../../mutations/Mutations";
 
 function Login() {
+  const [login] = useMutation(LOGIN_MUTATION);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSignIn(e: { preventDefault: () => void }) {
+  async function handleSignIn(e: FormEvent) {
     e.preventDefault();
 
     switch (true) {
@@ -21,6 +25,14 @@ function Login() {
           "A senha deve ter no mínimo 7 caracteres sendo ao menos uma letra e um dígito",
         );
       default:
+    }
+
+    try {
+      const result = await login({ variables: { input: { email, password } } });
+      const token = result.data.login.token;
+      localStorage.setItem("token", token);
+    } catch (error) {
+      console.error("Error during login:", error);
     }
   }
   return (
