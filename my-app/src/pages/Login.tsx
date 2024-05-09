@@ -1,12 +1,13 @@
-import "./Login.css";
+import "../styles/Login.css";
 import { FormEvent, useState } from "react";
-import { validatePassword, validateEmail } from "../../utils/Regex";
+import { validatePassword, validateEmail } from "../utils/Regex";
 import { useMutation } from "@apollo/client";
-import { LOGIN_MUTATION } from "../../mutations/Mutations";
+import { LOGIN_MUTATION } from "../mutations/Mutations";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [login] = useMutation(LOGIN_MUTATION);
-
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,6 +32,7 @@ function Login() {
       const result = await login({ variables: { input: { email, password } } });
       const token = result.data.login.token;
       localStorage.setItem("token", token);
+      navigate("/blank");
     } catch (error) {
       console.error("Error during login:", error);
     }
