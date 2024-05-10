@@ -36,6 +36,7 @@ function Login() {
       navigate("/blank");
     } catch (error) {
       console.error("Error during login:", error);
+      alert("Credenciais inválidas. Por favor, tente novamente.");
     }
   }
   return (
