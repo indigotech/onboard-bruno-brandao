@@ -4,9 +4,10 @@ import { validatePassword, validateEmail } from "../utils/Regex";
 import { useMutation } from "@apollo/client";
 import { LOGIN_MUTATION } from "../mutations/Mutations";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
 function Login() {
-  const [login] = useMutation(LOGIN_MUTATION);
+  const [login, { loading }] = useMutation(LOGIN_MUTATION);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +36,7 @@ function Login() {
       navigate("/blank");
     } catch (error) {
       console.error("Error during login:", error);
+      alert("Credenciais inválidas. Por favor, tente novamente.");
     }
   }
   return (
@@ -59,9 +61,13 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="Login-button" type="submit">
-          Entrar
-        </button>
+        {loading ? (
+          <Loading />
+        ) : (
+          <button className="Login-button" type="submit">
+            Entrar
+          </button>
+        )}
       </form>
     </div>
   );
