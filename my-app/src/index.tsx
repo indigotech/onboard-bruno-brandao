@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./libs/Apollo";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Blank from "./pages/Blank";
+import List from "./pages/List";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +14,8 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "blank",
-    element: <Blank />,
+    path: "list",
+    element: <List />,
   },
 ]);
 
