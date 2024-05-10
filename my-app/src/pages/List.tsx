@@ -13,9 +13,9 @@ function List() {
       <ul className="User-list">
         {users.map((user) => (
           <li key={user.id} className="List-item-container">
-            <text className="User-name"> {user.name} </text>
+            <span className="User-name"> {user.name} </span>
             <br />
-            <text className="User-email"> {user.email} </text>
+            <span className="User-email"> {user.email} </span>
           </li>
         ))}
       </ul>
