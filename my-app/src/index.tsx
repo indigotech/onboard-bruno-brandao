@@ -1,10 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import Login from "./pages/Login";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./libs/Apollo";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Blank from "./pages/Blank";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />,
+  },
+  {
+    path: "blank",
+    element: <Blank />,
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -12,7 +25,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <RouterProvider router={router} />
     </ApolloProvider>
   </React.StrictMode>,
 );
