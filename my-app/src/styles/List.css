@@ -6,7 +6,7 @@
     justify-content: center;
     height: 100vh; 
     background-color: rgb(255, 255, 255);
-    
+
 }
 
 .List-item-container {
@@ -16,7 +16,6 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #9900ff;
-    height: auto;
 
   }
 
@@ -55,5 +54,30 @@
     font-family:'Trebuchet MS';
     font-weight: bolder;
     color:#000000;
+
+}
+
+.Loading-button {
+
+  background-color: #9900ff;
+  color: white;
+  padding: 1vh 2vh; 
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bolder;
+  margin-bottom: 8vh;
+  margin-left: 6vh;
+  position: static;
+
+}
+
+.Warning {
+
+  font-size: larger;
+  font-family:'Trebuchet MS';
+  font-weight: bolder;
+  color:#f70101;
 
 }
