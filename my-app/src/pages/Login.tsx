@@ -33,7 +33,7 @@ function Login() {
       const result = await login({ variables: { input: { email, password } } });
       const token = result.data.login.token;
       localStorage.setItem("token", token);
-      navigate("/blank");
+      navigate("/list");
     } catch (error) {
       console.error("Error during login:", error);
       alert("Credenciais inválidas. Por favor, tente novamente.");

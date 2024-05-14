@@ -25,9 +25,10 @@
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 23vh; 
+    width: 24vh; 
     font-weight: bolder;
-    margin-left: 0.9vh;
+    margin-left: 1vh;
+    
 }
 
 .Login-button:hover {
@@ -48,6 +49,7 @@
     width: 25vh; 
     height: 4vh; 
     border: 1px solid rgb(168, 167, 167);
+    padding: 0.5vh;
 }
 
 .Login-label-text {

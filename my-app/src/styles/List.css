@@ -1,0 +1,47 @@
+.List-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    background-color: rgb(255, 255, 255);
+}
+
+.List-item-container {
+    padding: 20px;
+    margin-bottom: 4vh;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #9900ff;
+    height: auto;
+  }
+
+.List-item-container:hover {
+    background-color: #a06bea;
+  }
+
+.User-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+.User-name {
+    padding-bottom: 10px;
+    font-size: larger;
+    font-weight: bolder;
+    color: #ffffff;
+}
+
+.User-email {
+    font-size: medium;
+    font-weight: lighter;
+    color:#dfdfdf;
+
+}
+
+.Title {
+    font-size: larger;
+    font-family:'Trebuchet MS';
+    font-weight: bolder;
+    color:#000000;
+}
