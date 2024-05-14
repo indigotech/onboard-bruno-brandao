@@ -66,31 +66,37 @@ function List() {
 
   return (
     <div className="List-container">
-      <h1 className="Title">Lista de Usuários</h1>
+      <header className="Title-container">Lista de Usuários</header>
       {loading ? (
         <Loading />
       ) : (
-        <ul className="User-list">
-          {data &&
-            data.users.nodes.map((user: User) => (
-              <li key={user.id} className="List-item-container">
-                <span className="User-name"> {user.name} </span>
-                <br />
-                <span className="User-email"> {user.email} </span>
-              </li>
-            ))}
-          {hasMore ? (
-            loadingMore ? (
-              <Loading />
+        <div className="List-container">
+          <ul className="User-list">
+            {data &&
+              data.users.nodes.map((user: User) => (
+                <li key={user.id} className="List-item-container">
+                  <span className="User-name"> {user.name} </span>
+                  <br />
+                  <span className="User-email"> {user.email} </span>
+                </li>
+              ))}
+            {hasMore ? (
+              loadingMore ? (
+                <Loading />
+              ) : (
+                <div className="List-container">
+                  <button className="Loading-button" onClick={loadMore}>
+                    Carregue mais users
+                  </button>
+                </div>
+              )
             ) : (
-              <button className="Loading-button" onClick={loadMore}>
-                Carregue mais users
-              </button>
-            )
-          ) : (
-            <span className="Warning">Todos os usuários já foram listados</span>
-          )}
-        </ul>
+              <span className="Warning">
+                Todos os usuários já foram listados
+              </span>
+            )}
+          </ul>
+        </div>
       )}
     </div>
   );

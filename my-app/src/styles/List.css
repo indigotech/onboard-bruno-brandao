@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; 
     background-color: rgb(255, 255, 255);
 
 }
@@ -28,7 +27,6 @@
 .User-list {
 
     list-style-type: none;
-    padding: 0;
 
   }
 
@@ -48,12 +46,16 @@
 
 }
 
-.Title {
+.Title-container {
 
-    font-size: larger;
-    font-family:'Trebuchet MS';
-    font-weight: bolder;
-    color:#000000;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: rgb(36, 36, 36);
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+  margin-left: 2vh;
 
 }
 
@@ -67,9 +69,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-weight: bolder;
-  margin-bottom: 8vh;
-  margin-left: 6vh;
-  position: static;
 
 }
 
@@ -79,5 +78,14 @@
   font-family:'Trebuchet MS';
   font-weight: bolder;
   color:#f70101;
+
+}
+
+.Loading-container {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
 
 }
