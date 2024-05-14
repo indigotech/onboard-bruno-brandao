@@ -1,24 +1,34 @@
 import "../styles/List.css";
+import { LIST_QUERY } from "../query/Query";
+import Loading from "./Loading";
+import { useQuery } from "@apollo/client";
 
-const users = [
-  { id: 1, name: "Bruno", email: "bruno.brandao@taqtile.com" },
-  { id: 2, name: "Matheus", email: "matheus.felix@taqtile.com.br" },
-  { id: 3, name: "Alan", email: "alan.raso@taqtile.com.br" },
-];
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
 
 function List() {
+  const { loading, data } = useQuery<{ users: { nodes: User[] } }>(LIST_QUERY);
+
   return (
     <div className="List-container">
       <h1 className="Title">Lista de Usuários</h1>
-      <ul className="User-list">
-        {users.map((user) => (
-          <li key={user.id} className="List-item-container">
-            <span className="User-name"> {user.name} </span>
-            <br />
-            <span className="User-email"> {user.email} </span>
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <Loading />
+      ) : (
+        <ul className="User-list">
+          {data &&
+            data.users.nodes.map((user: User) => (
+              <li key={user.id} className="List-item-container">
+                <span className="User-name"> {user.name} </span>
+                <br />
+                <span className="User-email"> {user.email} </span>
+              </li>
+            ))}
+        </ul>
+      )}
     </div>
   );
 }
