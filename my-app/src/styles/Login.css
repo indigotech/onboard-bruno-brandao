@@ -18,7 +18,7 @@
 }
 
 .Login-button {
-    background-color: #9900ff;
+    background-color: #0b7b10;
     color: white;
     padding: 1vh 2vh; 
     border: none;
@@ -32,7 +32,7 @@
 }
 
 .Login-button:hover {
-    background-color: #a06bea;
+    background-color: #035e0c;
 }
 
 .Login-container {
