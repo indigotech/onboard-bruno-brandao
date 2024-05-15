@@ -7,6 +7,7 @@ import { ApolloProvider } from "@apollo/client";
 import { client } from "./libs/Apollo";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import List from "./pages/List";
+import AddUser from "./pages/AddUser";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "list",
     element: <List />,
+  },
+  {
+    path: "add-user",
+    element: <AddUser />,
   },
 ]);
 

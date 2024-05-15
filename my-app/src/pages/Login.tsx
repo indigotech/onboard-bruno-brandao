@@ -4,7 +4,7 @@ import { validatePassword, validateEmail } from "../utils/Regex";
 import { useMutation } from "@apollo/client";
 import { LOGIN_MUTATION } from "../graphql/mutations/Mutations";
 import { useNavigate } from "react-router-dom";
-import Loading from "./Loading";
+import Loading from "../components/Loading";
 
 function Login() {
   const [login, { loading }] = useMutation(LOGIN_MUTATION);

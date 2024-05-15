@@ -1,8 +1,9 @@
 import "../styles/List.css";
 import { GET_USERS } from "../graphql/query/Query";
-import Loading from "./Loading";
+import Loading from "../components/Loading";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
+import Fab from "../components/Fab";
 
 interface User {
   id: string;
@@ -98,6 +99,7 @@ function List() {
           </ul>
         </div>
       )}
+      <Fab />
     </div>
   );
 }
