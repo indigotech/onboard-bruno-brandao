@@ -26,6 +26,12 @@ export const validateBirthDate = (birthDate: string) => {
       return false;
     case age === 18 && month === today.getMonth() + 1 && day > today.getDate():
       return false;
+    case age > 18 && (month > 12 || month < 1):
+      return false;
+    case age > 18 && (day > 31 || day < 1):
+      return false;
+    case age > 110:
+      return false;
     default:
   }
 
