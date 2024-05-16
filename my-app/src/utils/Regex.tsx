@@ -15,9 +15,6 @@ export const validateBirthDate = (birthDate: string) => {
   const [day, month, year] = birthDate.split("/").map(Number);
 
   const today = new Date();
-  const dia = today.getDate() + 1;
-  console.log(dia);
-  console.log(day);
   const age = today.getFullYear() - year;
   switch (true) {
     case age < 18:
