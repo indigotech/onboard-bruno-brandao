@@ -51,16 +51,13 @@ function AddUser() {
     }
 
     try {
-      console.log({ input: { name, email, phone, role, birthDate } });
       await createUser({
         variables: {
           input: { name, email, phone, role, birthDate, password },
         },
       });
       navigate("/list");
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
+      window.location.reload();
     } catch (error) {
       console.error("Error during login:", error);
       alert("Credenciais inválidas. Por favor, tente novamente.");
