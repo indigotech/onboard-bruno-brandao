@@ -4,16 +4,17 @@ import Loading from "../components/Loading";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import Fab from "../components/Fab";
+import { Modal } from "../components/Modal";
 
-interface User {
-  id: string;
+interface Users {
+  id: number;
   name: string;
   email: string;
 }
 
 interface UsersResponse {
   users: {
-    nodes: User[];
+    nodes: Users[];
     pageInfo: {
       hasNextPage: boolean;
     };
@@ -31,6 +32,8 @@ function List() {
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
 
   const { loading, data, fetchMore } = useQuery<UsersResponse, UsersVars>(
     GET_USERS,
@@ -65,6 +68,16 @@ function List() {
     setOffset(offset + LIMIT);
   };
 
+  const handleModal = (id: number) => {
+    setIsOpen(true);
+    setSelectedUserId(id);
+  };
+
+  const handleCloseModal = () => {
+    setIsOpen(false);
+    setSelectedUserId(null);
+  };
+
   return (
     <div className="List-container">
       <header className="Title-container">Lista de Usuários</header>
@@ -74,11 +87,15 @@ function List() {
         <div className="List-container">
           <ul className="User-list">
             {data &&
-              data.users.nodes.map((user: User) => (
-                <li key={user.id} className="List-item-container">
-                  <span className="User-name"> {user.name} </span>
+              data.users.nodes.map((users: Users) => (
+                <li
+                  key={users.id}
+                  className="List-item-container"
+                  onClick={() => handleModal(users.id)}
+                >
+                  <span className="User-name"> {users.name} </span>
                   <br />
-                  <span className="User-email"> {user.email} </span>
+                  <span className="User-email"> {users.email} </span>
                 </li>
               ))}
             {hasMore ? (
@@ -97,6 +114,9 @@ function List() {
               </span>
             )}
           </ul>
+          {isOpen && selectedUserId !== null && (
+            <Modal onClose={handleCloseModal} userId={selectedUserId} />
+          )}
         </div>
       )}
       <Fab />
