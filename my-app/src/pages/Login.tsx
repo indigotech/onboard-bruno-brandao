@@ -34,7 +34,6 @@ function Login() {
       const token = result.data.login.token;
       localStorage.setItem("token", token);
       navigate("/list");
-      console.log(token);
     } catch (error) {
       console.error("Error during login:", error);
       alert("Credenciais inválidas. Por favor, tente novamente.");
