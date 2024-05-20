@@ -9,6 +9,9 @@ import { CREATE_USER } from "../graphql/mutations/Mutations";
 import Loading from "../components/Loading";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import { Input } from "../components/Input";
+import { Button } from "../components/Button";
+import { Header } from "../components/Header";
 
 function AddUser() {
   const [name, setName] = useState("");
@@ -114,117 +117,45 @@ function AddUser() {
           <Loading />
         ) : (
           <form onSubmit={handleSignup}>
-            <h1 className="text-center text-2xl font-bold text-black mt-5 mb-5">
-              Cadastro
-            </h1>
+            <Header title="Cadastro" />
             <div className="flex flex-col items-center">
-              <label
-                className={`text1-1 text-left w-52 font-regular mb-3 ${nameError ? "text-red-500" : "text-slate-700"}`}
-              >
-                Nome:
-              </label>
-              <input
-                type="text"
-                className={`border rounded px-1 h-9 h-10 w-52 mb-3 ${nameError ? "border-red-500" : "border-slate-300"}`}
+              <Input
+                label="Nome:"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                error={nameError}
               />
-              {nameError && (
-                <span className="text-red-500 text-xs w-52 regular  mb-1">
-                  {nameError}
-                </span>
-              )}
-
-              <label
-                className={`text1-1 text-left w-52 font-regular mb-3 ${emailError ? "text-red-500" : "text-slate-700"}`}
-              >
-                E-mail:
-              </label>
-              <input
-                type="text"
-                className={`border rounded px-1 h-9 w-52 mb-3 ${emailError ? "border-red-500" : "border-slate-300"}`}
+              <Input
+                label="E-mail:"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                error={emailError}
               />
-              {emailError && (
-                <span className="text-red-500 text-xs regular  mb-1 w-52">
-                  {emailError}
-                </span>
-              )}
-
-              <label
-                className={`text1-1 text-left w-52 font-regular mb-3 ${passwordError ? "text-red-500" : "text-slate-700"}`}
-              >
-                Senha:
-              </label>
-              <input
-                type="password"
-                className={`border rounded px-1 h-9 w-52 mb-3 ${passwordError ? "border-red-500" : "border-slate-300"}`}
+              <Input
+                label="Senha:"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                error={passwordError}
               />
-              {passwordError && (
-                <span className="text-red-500 text-xs regular  mb-1 w-52">
-                  {passwordError}
-                </span>
-              )}
-
-              <label
-                className={`text1-1 text-left w-52 font-regular mb-3 ${phoneError ? "text-red-500" : "text-slate-700"}`}
-              >
-                Telefone:
-              </label>
-              <input
-                type="text"
-                className={`border rounded px-1 h-9 w-52 mb-3 ${phoneError ? "border-red-500" : "border-slate-300"}`}
+              <Input
+                label="Telefone:"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                error={phoneError}
               />
-              {phoneError && (
-                <span className="text-red-500 text-xs regular  mb-1 w-52">
-                  {phoneError}
-                </span>
-              )}
-
-              <label
-                className={`text1-1 text-left w-52 font-regular mb-3 ${birthDateError ? "text-red-500" : "text-slate-700"}`}
-              >
-                Data de nascimento:
-              </label>
-              <input
-                type="text"
-                className={`border rounded px-1 h-9 w-52 mb-3 ${birthDateError ? "border-red-500" : "border-slate-300"}`}
+              <Input
+                label="Data de nascimento:"
                 value={birthDate}
                 onChange={(e) => setbirthDate(e.target.value)}
+                error={birthDateError}
               />
-              {birthDateError && (
-                <span className="text-red-500 text-xs regular mb-1 w-52">
-                  {birthDateError}
-                </span>
-              )}
-
-              <label
-                className={`text1-1 text-left w-52 font-regular mb-3 ${roleError ? "text-red-500" : "text-slate-700"}`}
-              >
-                Função:
-              </label>
-              <input
-                type="text"
-                className={`border rounded px-1 h-9 w-52 mb-3 ${roleError ? "border-red-500" : "border-slate-300"}`}
+              <Input
+                label="Função:"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
+                error={roleError}
               />
-              {roleError && (
-                <span className="text-red-500 text-xs regular mb-1 w-52">
-                  {roleError}
-                </span>
-              )}
-              <button
-                className="bg-[#0b7b10] text-s text-white p-2 mt-5 w-44 h-12 border-none rounded-xl cursor-pointer transition ease duration-300 font-bold hover:bg-[#4adb64]"
-                type="submit"
-              >
-                Cadastrar
-              </button>
+              <Button title="Cadastrar" />
             </div>
           </form>
         )}
