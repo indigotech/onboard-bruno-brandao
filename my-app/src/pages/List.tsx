@@ -68,7 +68,7 @@ function List() {
     setOffset(offset + LIMIT);
   };
 
-  const handleModal = (id: number) => {
+  const handleUserClick = (id: number) => {
     setIsOpen(true);
     setSelectedUserId(id);
   };
@@ -91,7 +91,7 @@ function List() {
                 <li
                   key={users.id}
                   className="List-item-container"
-                  onClick={() => handleModal(users.id)}
+                  onClick={() => handleUserClick(users.id)}
                 >
                   <span className="User-name"> {users.name} </span>
                   <br />
